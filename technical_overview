@@ -1,0 +1,20 @@
+#Technical Overview
+
+Here it is explained how the script works.
+First, the script reads the doc name that contains the url list and passes its value to a variable that it is a list that contains all the urls.
+From that, the script will request access to those websites and search for two things:
+1 - Any phone numbers found
+To do that, it's used regular expressions to search for known numbers formats and every number that fits in those formats is added to a list.
+However, a phone can belong to two different formats, for example, +1 (478) 389-9083 belongs to the format +x (xxx) xxx-xxxx, but the pattern
+(xxx) xxx-xxxx its also in that number and will return the number (478) 389-9083. To avoid duplicate numbers, after each one of the formats has
+searched inside the page for all possible patterns, those numbers are confronted with one another to exclude the duplicated phone. In this example,
+the code will get the smallest number and compare with the bigger one, if the smallest is equal to the final digits of the bigger phone,it's because
+they are the same number but the larger number has more information, in this example, the country code. So the code keeps the number that has more
+information and discards the other.
+2 - Any logo found
+The code will look for the logo considering 3 different possibilities:
+a - Inside the "a" links that contains the name logo if those links have an image.
+b - Inside all the "divs" that contains images and the name logo in some part of the image link.
+c - It will search again inside the "a" links, but will search if the title or class has the name "logo". 
+
+After that, the final information is added to the yield and exported to a json file.
