@@ -1,0 +1,15 @@
+https://www.cmsenergy.com/contact-us/default.aspx
+https://www.illion.com.au
+https://www.phosagro.com/contacts
+https://www.powerlinx.com/contact
+https://www.cialdnb.com/en
+https://www.illion.com.au/contact-us
+https://www.shopping-guararapes.com/contato
+http://www.correios.com.br/
+
+RUN pip install lxml
+yield {
+        'logo': img_url_list,
+        'phones': final_phones,
+        'website': response.url
+    }
